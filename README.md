@@ -15,7 +15,10 @@ Backend erreichbar unter folgendem Link:
 localhost:8080
 ```
 
+Frontend starten ohne Docker:
+ng serve
+```
+
 Frontend erreichbar unter folgendem Link:
 ```
 localhost:4200
-```
