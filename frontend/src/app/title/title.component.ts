@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './title.component.css'
 })
 export class TitleComponent {
-
+  title = 'Mein Titel im Browser';  // Titel, der im Browser angezeigt wird
 }
