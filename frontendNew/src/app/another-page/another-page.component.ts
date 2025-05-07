@@ -1,0 +1,10 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-another-page',
+  templateUrl: './another-page.component.html',
+  styleUrls: ['./another-page.component.css']
+})
+export class AnotherPageComponent {
+  title = 'Another Page';
+}
