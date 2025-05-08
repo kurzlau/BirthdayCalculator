@@ -1,1 +1,25 @@
-<p>another-page works!</p>
+<h1>These are your calculated values based on your date of birth:</h1>
+
+<p> Your birthday: </p>
+<table>
+    <thead>
+  <tr>
+    <th>Age in Years</th>
+    <th>Age in Days</th>
+    <th>Age in Months</th>
+    <th>Days since last birthday</th>
+    <th>Days until next birthday</th>
+    <th>Your zodiac</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let x of values">
+    <td>{{ x.age_in_years }}</td>
+    <td>{{ x.age_in_days }}</td>
+    <td>{{ x.age_in_months }}</td>
+    <td>{{ x.days_since_last_birthday }}</td>
+    <td>{{ x.days_until_next_birthday }}</td>
+    <td>{{ x.get_zodiac }}</td>
+  </tr>
+</tbody>
+</table>

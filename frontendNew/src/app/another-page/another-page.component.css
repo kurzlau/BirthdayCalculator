@@ -1,0 +1,40 @@
+h1 {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+p {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+table {
+    width: 50%;
+    margin: 20px auto; /* ← zentriert horizontal */
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+  }
+  
+  thead {
+    background-color: lightgray;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid darkblue;
+  }
+  
+  
+  th {
+    font-weight: bold;
+    color: black;
+  }
+  
+
+  
+    td {
+      position: relative;
+    }
+  
