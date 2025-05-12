@@ -1,30 +1,52 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BirthdayService } from '../services/birthday.service';
+import { ActivatedRoute, RouterModule, Params } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'app-another-page',
-  imports: [CommonModule], // <-- HIER CommonModule importieren
+  imports: [CommonModule, RouterModule],
   templateUrl: './another-page.component.html',
   styleUrls: ['./another-page.component.css']
 })
-export class AnotherPageComponent {
-  values = [
-    {
-      age_in_years: 25,
-      age_in_days: 9125,
-      age_in_months: 300,
-      days_since_last_birthday: 130,
-      days_until_next_birthday: 235,
-      get_zodiac: 'Löwe'
-    },
-    {
-      age_in_years: 30,
-      age_in_days: 10950,
-      age_in_months: 360,
-      days_since_last_birthday: 200,
-      days_until_next_birthday: 165,
-      get_zodiac: 'Zwilling',
+export class AnotherPageComponent implements OnInit {
+  values: any[] = [];
+  isLoading = false;
+  error: string | null = null;
+  birthdayValue = '';
+
+  // ActivatedRoute korrekt per Konstruktor injizieren
+  constructor(
+    private birthdayService: BirthdayService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params: Params) => {
+      console.log('📦 Query-Parameter:', params); // <--- HIER
+      const birthday = params['bday'];
+      if (birthday) {
+        this.birthdayValue = birthday;
+        this.loadBirthdayData(birthday);
+      } else {
+        console.warn('⚠️ Kein Geburtstag übergeben.');
+      }
+    });
+  }
+  
+
+  async loadBirthdayData(birthday: string): Promise<void> {
+    this.isLoading = true;
+    this.error = null;
+    try {
+      const data = await this.birthdayService.fetchBirthdayData(birthday);
+      this.values = [data];
+    } catch (err) {
+      this.error = 'Failed to load birthday data.';
+      console.error(err);
+    } finally {
+      this.isLoading = false;
     }
-  ];
+  }
 }

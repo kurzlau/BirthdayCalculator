@@ -3,6 +3,6 @@
 
 <div class="container">
 <label for="birthday">Choose a date: </label>
-<input type="date" id="birthday" name="birthday" placeholder="DD/MM/YYYY" />
+<input type="date" id="birthday" name="birthday" [(ngModel)]="birthday" />
 <button (click)="onSubmit()">Submit</button>  
 </div>
